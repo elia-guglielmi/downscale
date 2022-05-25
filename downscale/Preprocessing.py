@@ -4,7 +4,7 @@ import numpy as np
 import geopandas as gpd
 import regionmask
 import warnings
-#import xesmf as xe  
+import xesmf as xe  
 
 
 class Preprocessing:
@@ -59,6 +59,7 @@ class Preprocessing:
         if scale is not None:
             self.ds["longitude"]=self.ds.longitude/scale
             self.ds["latitude"]=self.ds.latitude/scale
+
 
     
    
@@ -142,7 +143,7 @@ class Preprocessing:
         if estremolon is None:
             lon=np.array(lon,dtype='float32')
             mask=np.isin(lon,np.around(self.longitude,3))
-            self.ds=self.ds.sel(longitude=lon[mask],method="nearest",tolerance=0.001)
+            self.ds=self.ds.sel(longitude=lon[mask],method="nearest")
         elif type(lon) is not list:
             self.ds=self.ds.sel(longitude=slice(lon,estremolon))
     """
@@ -153,7 +154,7 @@ class Preprocessing:
         if estremolat is None:
             lat=np.array(lat,dtype='float32')
             mask=np.isin(lat,np.around(self.latitude,3))
-            self.ds=self.ds.sel(latitude=lat[mask],method="nearest",tolerance=0.001)
+            self.ds=self.ds.sel(latitude=lat[mask],method="nearest")
         elif type(lat) is not list:
             self.ds=self.ds.sel(latitude=slice(lat,estremolat))
 
@@ -187,17 +188,18 @@ class Preprocessing:
     recives a dataset with a lower lon/lat resolution and upscales this.ds to the same resolution 
     """
 
-    def upscale_lon_lat(self,dataset,method=None):
+    def regrid_lon_lat(self,dataset):
         warnings.filterwarnings("ignore",  '.*Using.*', )
-        if self.longitude.size >= dataset["longitude"].size and self.latitude.size >= dataset["latitude"].size:
-            if method is None:
-                regridder = xe.Regridder(self.ds.rename({ 'latitude': 'lat','longitude': 'lon'}), dataset.rename({'latitude': 'lat','longitude': 'lon'}),'bilinear')
-            else: 
-                regridder = xe.Regridder(self.ds.rename({ 'latitude': 'lat','longitude': 'lon'}), dataset.rename({'latitude': 'lat','longitude': 'lon'}),method)
-            self.ds= regridder(self.ds)
-            self.ds= self.ds.rename({'lat' : 'latitude','lon': 'longitude'})
-        else: 
-            raise TypeError ("given dataset can't have a higher lon,lat resolution")  
+        regridder = xe.Regridder(self.ds.rename({ 'latitude': 'lat','longitude': 'lon'}), dataset.rename({'latitude': 'lat','longitude': 'lon'}),'nearest_s2d')
+        self.ds= regridder(self.ds)
+        self.ds= self.ds.rename({'lat' : 'latitude','lon': 'longitude'}) 
+
+
+    """
+    forcefully putes the dataset in main memory
+    """
+    def load(self):
+        self.ds=self.ds.load()
     
     """
     Recives the conversion rate and convert the unito of mesure of the data contained in a data variable of the dataset

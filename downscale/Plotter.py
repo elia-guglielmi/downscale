@@ -15,29 +15,25 @@ class Plotter:
     """
     recives a dataset with the unscaled and scaled data and plots them
     """
-    def plot(self,dataset,unscaled_name, scaled_name, colormap=None,figsize=None):
+    def plot(self,dataset,unscaled_name, scaled_name, colormap=None):
         models=[unscaled_name,scaled_name]
         
         if dataset.latitude[0]>dataset.latitude[-1]:
             dataset=dataset.reindex(latitude=list(reversed(dataset.latitude)))
             
-        # Define the figure and each axis for the 1 rows and 2 columns
-        if figsize is None:
-            fig, axs = plt.subplots(nrows=1,ncols=2,
-                            subplot_kw={'projection': ccrs.PlateCarree()},
-                            figsize=(11,8.5))
-        else:
-            fig, axs = plt.subplots(nrows=1,ncols=2,
-                            subplot_kw={'projection': ccrs.PlateCarree()},
-                            figsize=figsize)
+        # Define the figure and each axis for the 3 rows and 3 columns
+        fig, axs = plt.subplots(nrows=1,ncols=2,
+                        subplot_kw={'projection': ccrs.PlateCarree()},
+                        figsize=(11,8.5))
+
         # axs is a 2 dimensional array of `GeoAxes`.  We will flatten it into a 1-D array
         axs=axs.flatten()
         #Loop over all of the model
         
         for i,model in enumerate(models):
 
-            # Select the date
-            data=dataset[model][0,:,:]
+            # Select the week 1 forecast from the specified model
+            data=dataset[model].isel(time=0)
 
             # Add the cyclic point
             data,lons=add_cyclic_point(data,coord=dataset['longitude'])
