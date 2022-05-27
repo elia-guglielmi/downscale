@@ -195,9 +195,7 @@ class Model:
     
        
     def accuracy(self,X_test,y_test):
-        """makes prediction and confront them to the recived numpyarray to calculate the score,
-    explained variance, max error,mean absolute error, mean squared error, median absolute error and r2 score
-    and saves them as a string in the class attribute Model.stats
+        """makes prediction and confront them to the recived numpyarray to calculate the score,explained variance, max error,mean absolute error, mean squared error, median absolute error and r2 score and saves them as a string in the class attribute Model.stats
 
         Args:
             X_test (pandas.dataframe): Pandas dataframe used to make predictions
