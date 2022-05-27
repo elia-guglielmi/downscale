@@ -12,10 +12,15 @@ import cartopy.mpl.ticker as cticker
 class Plotter:
     
 
-    """
-    recives a dataset with the unscaled and scaled data and plots them
-    """
     def plot(self,dataset,unscaled_name, scaled_name, colormap=None):
+        """display a plot of the data
+
+        Args:
+            dataset (xarray.dataset): the  containing the data to plot
+            unscaled_name (string): the name of the data variables containing the data before downscaling
+            scaled_name (string): the name of the data variables containing the data after downscaling
+            colormap (string, optional): the name of the colormap to use. Defaults to coolwarm.
+        """
         models=[unscaled_name,scaled_name]
         
         if dataset.latitude[0]>dataset.latitude[-1]:
