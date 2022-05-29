@@ -1,7 +1,6 @@
 import xarray as xr
 import pandas as pd
 import numpy as np
-import geopandas as gpd
 import cartopy.crs as ccrs
 import matplotlib as mpl
 import matplotlib.pyplot as plt

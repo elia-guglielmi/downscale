@@ -44,7 +44,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-downscale.Downscaler">downscale.Downscaler module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-downscale.Model">downscale.Model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#downscale-plotter-module">downscale.Plotter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-downscale.Plotter">downscale.Plotter module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downscale-preprocessing-module">downscale.Preprocessing module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-downscale">Module contents</a></li>
 </ul>
@@ -283,8 +283,30 @@ features and target</p>
 </dd></dl>
 
 </section>
-<section id="downscale-plotter-module">
-<h2>downscale.Plotter module<a class="headerlink" href="#downscale-plotter-module" title="Permalink to this headline"></a></h2>
+<section id="module-downscale.Plotter">
+<span id="downscale-plotter-module"></span><h2>downscale.Plotter module<a class="headerlink" href="#module-downscale.Plotter" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="downscale.Plotter.Plotter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">downscale.Plotter.</span></span><span class="sig-name descname"><span class="pre">Plotter</span></span><a class="headerlink" href="#downscale.Plotter.Plotter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Plotter.Plotter.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unscaled_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaled_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Plotter.Plotter.plot" title="Permalink to this definition"></a></dt>
+<dd><p>display a plot of the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>xarray.dataset</em>) – the  containing the data to plot</p></li>
+<li><p><strong>unscaled_name</strong> (<em>string</em>) – the name of the data variables containing the data before downscaling</p></li>
+<li><p><strong>scaled_name</strong> (<em>string</em>) – the name of the data variables containing the data after downscaling</p></li>
+<li><p><strong>colormap</strong> (<em>string</em><em>, </em><em>optional</em>) – the name of the colormap to use. Defaults to coolwarm.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="downscale-preprocessing-module">
 <h2>downscale.Preprocessing module<a class="headerlink" href="#downscale-preprocessing-module" title="Permalink to this headline"></a></h2>
