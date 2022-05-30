@@ -45,7 +45,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-downscale.Downscaler">downscale.Downscaler module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-downscale.Model">downscale.Model module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-downscale.Plotter">downscale.Plotter module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#downscale-preprocessing-module">downscale.Preprocessing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-downscale.Preprocessing">downscale.Preprocessing module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-downscale">Module contents</a></li>
 </ul>
 </li>
@@ -308,8 +308,242 @@ features and target</p>
 </dd></dl>
 
 </section>
-<section id="downscale-preprocessing-module">
-<h2>downscale.Preprocessing module<a class="headerlink" href="#downscale-preprocessing-module" title="Permalink to this headline"></a></h2>
+<section id="module-downscale.Preprocessing">
+<span id="downscale-preprocessing-module"></span><h2>downscale.Preprocessing module<a class="headerlink" href="#module-downscale.Preprocessing" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">downscale.Preprocessing.</span></span><span class="sig-name descname"><span class="pre">Preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nomefile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>creates a new isctance.
+if a path is passed reads a xarray dataset from the file
+and saves it on the instance variable ds</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.attributes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">attributes</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.attributes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.combine_dataset">
+<span class="sig-name descname"><span class="pre">combine_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.combine_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>recives 1 or more datasets and combines them toghether based on longitude latitude and time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasets</strong> (<em>xarray.dataset</em>) – datasets to combine</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – _description_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.convert_longitude_range">
+<span class="sig-name descname"><span class="pre">convert_longitude_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.convert_longitude_range" title="Permalink to this definition"></a></dt>
+<dd><p>converts the latitude range from (0,360) to (-180,180)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.convert_unit_of_measure">
+<span class="sig-name descname"><span class="pre">convert_unit_of_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversion_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.convert_unit_of_measure" title="Permalink to this definition"></a></dt>
+<dd><p>converts the unit of mesure of the data contained in a data variable of the dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var</strong> (<em>string</em>) – the data variable to convert</p></li>
+<li><p><strong>conversion_value</strong> (<em>int</em><em> or </em><em>float</em>) – the value to apply</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.coordinates">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coordinates</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.coordinates" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.copy" title="Permalink to this definition"></a></dt>
+<dd><p>returns a copy of this object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a copy of this object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>downscaling.Preprocessing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.data_vars">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_vars</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.data_vars" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.dataset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.dataset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.dims">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dims</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.dims" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.dropvars">
+<span class="sig-name descname"><span class="pre">dropvars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.dropvars" title="Permalink to this definition"></a></dt>
+<dd><p>drops 1 or more datavars form the dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – the name of the datavariable to drop</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.latitude">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latitude</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.latitude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.load" title="Permalink to this definition"></a></dt>
+<dd><p>forcefully putes the dataset in main memory</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.longitude">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">longitude</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.longitude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.open_dataset">
+<span class="sig-name descname"><span class="pre">open_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.open_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>reads a xarray dataset from a file given the path
+and saves it on the instance variable ds</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>path (string): the netCDF file path</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.regrid_lon_lat">
+<span class="sig-name descname"><span class="pre">regrid_lon_lat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.regrid_lon_lat" title="Permalink to this definition"></a></dt>
+<dd><p>recives a dataset with a lower lon/lat resolution and regridds this.ds to the same resolution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataset</strong> (<em>xarray.dataset</em>) – dataset with lower resolution</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.select" title="Permalink to this definition"></a></dt>
+<dd><p>selects the data relative to a specific time,longitude or latitude</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>] or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – the dates to select along the time dimension, it accepts a single date with dtype=datetime64[ns],a list of dates or a period rapresented by tuple of 2 elements,the first biing the start and the second the end. Defaults to None.</p></li>
+<li><p><strong>lon</strong> (<em>float</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – the longitude to select along the longitude dimension, it accepts a single float value, a list of floats, or a tuple of 2 elements to select all the value from the firs elemento fo the tuple to the second. Defaults to None.</p></li>
+<li><p><strong>lat</strong> (<em>float</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – the latitude to select along the latitude dimension, it accepts a single float value, a list of floats, or a tuple of 2 elements to select all the value from the firs elemento fo the tuple to the second. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.select_lat">
+<span class="sig-name descname"><span class="pre">select_lat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estremolat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.select_lat" title="Permalink to this definition"></a></dt>
+<dd><p>selects the data relative to a specific latitude</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat</strong> (<em>float</em><em> or </em><em>list</em>) – a float or a list of floats  to select, if estremolon is passed this is considered the first latitude of the range to select</p></li>
+<li><p><strong>estremolat</strong> (<em>float</em><em>, </em><em>optional</em>) – the last latitude of the range to select. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.select_lon">
+<span class="sig-name descname"><span class="pre">select_lon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estremolon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.select_lon" title="Permalink to this definition"></a></dt>
+<dd><p>selects the data relative to a specific longitude</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lon</strong> (<em>float</em><em> or </em><em>list</em>) – a float or a list of floats  to select, if estremolon is passed this is considered the first longitude of the range to select</p></li>
+<li><p><strong>estremolon</strong> (<em>float</em><em>, </em><em>optional</em>) – the last longitude of the range to select. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.select_region">
+<span class="sig-name descname"><span class="pre">select_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapefile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.select_region" title="Permalink to this definition"></a></dt>
+<dd><p>selects data of a specific geographic area from a dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – name of the geographic area</p></li>
+<li><p><strong>shapefile</strong> (<em>string</em><em>, </em><em>optional</em>) – file path to the shapefile (.shp) containing the poligon of the desired geographic area.if None is passed pandas ‘naturalearth_lowres’ is used. Defaults to None.</p></li>
+<li><p><strong>column_name</strong> (<em>string</em><em>, </em><em>optional</em>) – the name of the column containing the region name in the shapefile. Defaults to None.</p></li>
+<li><p><strong>scale</strong> (<em>int</em><em>, </em><em>optional</em>) – the scale applied in the shapefile. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.select_time">
+<span class="sig-name descname"><span class="pre">select_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fineperiodo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.select_time" title="Permalink to this definition"></a></dt>
+<dd><p>selects the data relative to a specific time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>] or </em><em>list</em>) – a date or a list of dates to select, if fineperiodo is passed this is considered the first date of the period to select</p></li>
+<li><p><strong>fineperiodo</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em><em>, </em><em>optional</em>) – the last date of the period to select. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – _description_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.select_time_frequence">
+<span class="sig-name descname"><span class="pre">select_time_frequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tipo_raggruppamento</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.select_time_frequence" title="Permalink to this definition"></a></dt>
+<dd><p>groups by time based on frequency:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freq</strong> (<em>string{&quot;Y&quot;=annual</em><em>,</em><em>&quot;M&quot;=montly</em><em>,</em><em>&quot;W&quot;=weekly</em><em>,</em><em>&quot;D&quot;=daily</em><em>,</em><em>&quot;h&quot;=by hour</em><em>,</em><em>&quot;m&quot;=by minute}</em>) – the freqency of the data present in the dataset</p></li>
+<li><p><strong>tipo_raggruppamento</strong> (<em>string{&quot;min&quot;</em><em>,</em><em>&quot;max&quot;</em><em>,</em><em>&quot;sum&quot;</em><em>,</em><em>&quot;median&quot;</em><em>,</em><em>&quot;median&quot;</em><em>,</em><em>&quot;prod&quot;</em><em>,</em><em>&quot;std&quot;</em><em>,</em><em>&quot;var&quot;}</em><em>, </em><em>optional</em>) – the value returned by the grouping. Defaults to Mean.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.time">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">time</span></span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="downscale.Preprocessing.Preprocessing.unify_chunks">
+<span class="sig-name descname"><span class="pre">unify_chunks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#downscale.Preprocessing.Preprocessing.unify_chunks" title="Permalink to this definition"></a></dt>
+<dd><p>unify the chincks of the ds attribute</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-downscale">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-downscale" title="Permalink to this headline"></a></h2>
